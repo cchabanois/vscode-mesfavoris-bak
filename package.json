@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "build": "tsc --build packages/core packages/mesfavoris packages/myext",
+    "build": "tsc --build packages/core packages/mesfavoris",
     "watch": "tsc --build --watch packages/core packages/mesfavoris",
     "test": "lerna run test",
     "clean": "rimraf packages/**/lib packages/**/out"
@@ -14,7 +14,6 @@
   },
   "workspaces": [
     "packages/core",
-    "packages/mesfavoris",
-    "packages/myext"
+    "packages/mesfavoris"
   ]
 }

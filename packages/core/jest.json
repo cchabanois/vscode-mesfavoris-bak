@@ -1,0 +1,14 @@
+{
+  "moduleFileExtensions": [
+    "ts", "js"
+  ],
+  "transform": {
+    "\\.(ts)$": "ts-jest"
+  },
+  "testRegex": "/__tests__/.*\\.(ts)$",
+  "moduleDirectories": [
+    "src", 
+    "node_modules"
+  ],
+  "rootDir":"src"
+}

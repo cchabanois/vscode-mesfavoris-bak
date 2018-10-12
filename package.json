@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "build": "tsc --build packages/core packages/mesfavoris packages/myext",
+    "watch": "tsc --build --watch packages/core packages/mesfavoris",
+    "test": "lerna run test",
+    "clean": "rimraf packages/**/lib packages/**/out"
+  },
+  "devDependencies": {
+    "lerna": "^3.4.0",
+    "typescript": "~3.0.0",
+    "rimraf": "^2.6.2"
+  },
+  "workspaces": [
+    "packages/core",
+    "packages/mesfavoris",
+    "packages/myext"
+  ]
+}

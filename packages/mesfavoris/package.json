@@ -1,0 +1,48 @@
+{
+  "name": "@mesfavoris/mesfavoris",
+  "version": "1.0.0",
+  "description": "",
+  "publisher": "name",
+  "main": "out/extension.js",
+  "typings": "out/index.d.ts",
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.27.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onView:mesFavoris"
+  ],
+  "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "mesFavoris",
+          "name": "Mes Favoris"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "postinstall": "node ../../node_modules/vscode/bin/install",
+    "test": "node ../../node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.4",
+    "@types/mocha": "^2.2.42",
+    "@types/node": "^8.10.25",
+    "@types/tmp": "^0.0.33",
+    "tslint": "^5.8.0",
+    "vscode": "^1.1.21",
+    "chai": "^4.2.0"    
+  },
+  "dependencies": {
+    "@mesfavoris/core": "^1.0.0",
+    "tmp": "^0.0.33",
+    "typescript": "~3.0.0"
+  }
+}

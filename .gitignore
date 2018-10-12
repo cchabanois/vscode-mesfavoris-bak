@@ -1,0 +1,8 @@
+node_modules/
+lib/
+out/
+.vscode/
+.vscode-test/
+yarn-error.log
+lerna-debug.log
+/TODO.txt

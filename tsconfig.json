@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "lib": [
+      "es6"
+    ],
+    "declaration": true,
+    "sourceMap": true,
+//    "declarationMap": true,
+    "strict": true,
+    "composite": true,
+    "skipLibCheck":true
+  }
+}

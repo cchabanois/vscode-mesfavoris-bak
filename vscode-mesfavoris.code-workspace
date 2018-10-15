@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": ".",
+			"name": "Workspace"
+		},
+		{
+			"path": "packages/core"
+		},
+		{
+			"path": "packages/mesfavoris",
+			"name": "vscode plugin"
+		}
+	],
+	"settings": {}
+}

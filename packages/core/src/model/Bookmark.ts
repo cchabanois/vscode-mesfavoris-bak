@@ -19,7 +19,7 @@ export class Bookmark {
     readonly bookmarkId: BookmarkId;
     readonly properties: Map<string, string>;
 
-    constructor(bookmarkId: BookmarkId, properties?: Map<string, string>) {
+    constructor(bookmarkId: BookmarkId = getBookmarkId(), properties?: Map<string, string>) {
         this.bookmarkId = bookmarkId;
         if (!properties) {
             this.properties = Map();

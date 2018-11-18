@@ -1,16 +1,34 @@
-import { TreeDataProvider, TreeItem, TreeItemCollapsibleState, ProviderResult, ThemeIcon }  from 'vscode';
+import { TreeDataProvider, TreeItem, TreeItemCollapsibleState, ProviderResult, ThemeIcon, Event, EventEmitter }  from 'vscode';
 import { Bookmark, BookmarkFolder, BookmarksTree } from '@mesfavoris/core';
 import { Base64ToUri } from './Base64ToUri';
+import { Observable } from "rxjs";
+import { last } from 'rxjs/operators';
+import { BookmarkId } from '@mesfavoris/core/lib/model/Bookmark';
 
 export class BookmarksTreeDataProvider implements TreeDataProvider<Bookmark> {
-    private readonly bookmarksTree : BookmarksTree;
+    private bookmarksTreeProvider : () => BookmarksTree;
     private readonly base64ToUri : Base64ToUri;
 
-    constructor(bookmarksTree : BookmarksTree, base64Dir : string) {
-        this.bookmarksTree = bookmarksTree;
+	private readonly eventEmitter: EventEmitter<Bookmark> = new EventEmitter<Bookmark>();
+    readonly onDidChangeTreeData: Event<Bookmark> = this.eventEmitter.event;
+
+    constructor(bookmarksTreeProvider : () => BookmarksTree, base64Dir : string) {
         this.base64ToUri = new Base64ToUri(base64Dir);
+        this.bookmarksTreeProvider = bookmarksTreeProvider;
     }
     
+    private get bookmarksTree() {
+        return this.bookmarksTreeProvider();
+    }
+
+    public refresh(bookmarkId? : BookmarkId) {
+        let bookmark : Bookmark|undefined = undefined;
+        if (bookmarkId) {
+            bookmark = this.bookmarksTree.getBookmark(bookmarkId);
+        }
+        this.eventEmitter.fire(bookmark);
+    }
+
     async getTreeItem(element: Bookmark): Promise<TreeItem> {
         const label = element.properties.get(Bookmark.PROPERTY_NAME, "unknown");
         const treeItemCollapsableState = element instanceof BookmarkFolder ? TreeItemCollapsibleState.Collapsed : TreeItemCollapsibleState.None;

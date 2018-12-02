@@ -1,0 +1,33 @@
+{
+  "name": "@mesfavoris/textmatching",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "Chabanois Cédric <cchabanois@gmail.com>",
+  "homepage": "https://github.com/cchabanois/vscode-mesfavoris#readme",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cchabanois/vscode-mesfavoris.git"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "jest --config jest.json"
+  },
+  "bugs": {
+    "url": "https://github.com/cchabanois/vscode-mesfavoris/issues"
+  },
+  "dependencies": {
+    "big-integer": "^1.6.36",
+    "functional-red-black-tree": "^1.0.1",
+    "jsbi": "^2.0.4",
+    "lerna": "^3.4.0",
+    "xregexp": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/xregexp": "^3.0.29",
+    "jest-extended": "^0.11.0",
+    "typescript": "~3.0.0"
+  }
+}

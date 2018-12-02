@@ -2,8 +2,8 @@
   "private": true,
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "build": "tsc --build packages/core packages/mesfavoris",
-    "watch": "tsc --build --watch packages/core packages/mesfavoris",
+    "build": "tsc --build packages/core packages/mesfavoris packages/textmatching",
+    "watch": "tsc --build --watch packages/core packages/mesfavoris packages/textmatching",
     "test": "lerna run test",
     "clean": "rimraf packages/**/lib packages/**/out"
   },
@@ -14,6 +14,7 @@
   },
   "workspaces": [
     "packages/core",
-    "packages/mesfavoris"
+    "packages/mesfavoris",
+    "packages/textmatching"
   ]
 }

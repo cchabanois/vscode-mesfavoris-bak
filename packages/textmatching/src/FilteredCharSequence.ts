@@ -3,7 +3,7 @@ import createRBTree, { RedBlackTree } from "functional-red-black-tree";
 import { CharSubSequence } from "./CharSubSequence";
 import { isString } from "util";
  
-export interface CharSequenceFilter {
+export interface ICharSequenceFilter {
 	/**
 	 * return the next included char
 	 * 
@@ -24,7 +24,7 @@ export class FilteredCharSequence implements CharSequence {
     private readonly _length : number;
     private readonly subSequences : RedBlackTree<number, CharSubSequence>;
     
-    constructor(parent : CharSequence|string, filter : CharSequenceFilter) {
+    constructor(parent : CharSequence|string, filter : ICharSequenceFilter) {
         this.parent = isString(parent)?new StringCharSequence(parent):parent;
         this.subSequences = this.getSubSequences(this.parent, filter);
         const end = this.subSequences.end;
@@ -36,7 +36,7 @@ export class FilteredCharSequence implements CharSequence {
 
     }
     
-    private getSubSequences(parent : CharSequence, filter : CharSequenceFilter) {
+    private getSubSequences(parent : CharSequence, filter : ICharSequenceFilter) {
         let subSequences : RedBlackTree<number, CharSubSequence> = createRBTree<number, CharSubSequence>();
         const lengthSource = parent.length();
         let indexSource = 0;
@@ -108,6 +108,9 @@ export class FilteredCharSequence implements CharSequence {
 		return low;
     }
 
+    subSequence(start: number, end: number): CharSequence {
+        return new CharSubSequence(this, start, end);
+    }
     public toString() : string {
         let result : string = '';
         for (let i = 0; i < this._length; i++) {

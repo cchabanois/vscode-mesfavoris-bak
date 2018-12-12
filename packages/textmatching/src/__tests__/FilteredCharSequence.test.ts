@@ -1,14 +1,14 @@
-import { FilteredCharSequence, CharSequenceFilter } from "../FilteredCharSequence";
+import { FilteredCharSequence, ICharSequenceFilter } from "../FilteredCharSequence";
 import { CharSequence } from "../CharSequence";
 
 describe('FilteredCharSequence Tests', () => {
-    const noFilter : CharSequenceFilter = { 
+    const noFilter : ICharSequenceFilter = { 
         nextCharIndex(charSequence : CharSequence, index : number) : number { 
             return index 
         }  
     };
 
-    const removeWhiteCharsFilter : CharSequenceFilter = { 
+    const removeWhiteCharsFilter : ICharSequenceFilter = { 
         nextCharIndex(charSequence : CharSequence, index : number) : number { 
             while (index < charSequence.length()) {
                 const charAtIndex = charSequence.charAt(index);

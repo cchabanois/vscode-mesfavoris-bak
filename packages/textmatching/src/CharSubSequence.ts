@@ -1,6 +1,7 @@
 import { CharSequence } from "./CharSequence";
 
 export class CharSubSequence implements CharSequence {
+
     private readonly offset : number;
     private readonly _length : number;
     private parent : CharSequence;
@@ -28,6 +29,10 @@ export class CharSubSequence implements CharSequence {
             return undefined;
         }
         return this.offset + index;
+    }
+
+    subSequence(start: number, end: number): CharSequence {
+        return new CharSubSequence(this, start, end);
     }
 
     public toString() : string {

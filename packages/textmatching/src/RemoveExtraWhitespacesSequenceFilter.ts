@@ -1,8 +1,8 @@
-import { CharSequenceFilter } from "./FilteredCharSequence";
+import { ICharSequenceFilter } from "./FilteredCharSequence";
 import { CharSequence } from "./CharSequence";
 import XRegExp from "xregexp";
 
-export class RemoveExtraWhitespacesSequenceFilter implements CharSequenceFilter {
+export class RemoveExtraWhitespacesSequenceFilter implements ICharSequenceFilter {
     private isLetterOrDigitRegExp : RegExp = XRegExp('[\\pL\\pN]');
 
     nextCharIndex(charSequence : CharSequence, index: number): number {

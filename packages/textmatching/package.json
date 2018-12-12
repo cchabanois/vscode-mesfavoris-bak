@@ -23,9 +23,11 @@
     "functional-red-black-tree": "^1.0.1",
     "jsbi": "^2.0.4",
     "lerna": "^3.4.0",
+    "long": "^4.0.0",
     "xregexp": "^4.2.0"
   },
   "devDependencies": {
+    "@types/long": "^4.0.0",
     "@types/xregexp": "^3.0.29",
     "jest-extended": "^0.11.0",
     "typescript": "~3.0.0"

@@ -1,6 +1,11 @@
-import { MatchScoreComputer } from "./FuzzyStringMatcher";
+import { IMatchScoreComputer } from "./IFuzzyStringMatcher";
 
-export class DistanceMatchScoreComputer implements MatchScoreComputer {
+/**
+ * A IMatchScoreComputer that considers both the error count and the
+ * distance to the expected location
+ * 
+ */
+export class DistanceMatchScoreComputer implements IMatchScoreComputer {
     private readonly matchDistance : number;
 
     /**

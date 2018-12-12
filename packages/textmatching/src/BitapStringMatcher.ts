@@ -1,6 +1,6 @@
 import { StringCharSequence, CharSequence } from "./CharSequence";
 import { stringify } from "querystring";
-import { FuzzyStringMatcher, MatchScoreComputer } from "./FuzzyStringMatcher";
+import { IFuzzyStringMatcher, IMatchScoreComputer } from "./IFuzzyStringMatcher";
 
 /**
  * Use the bitap algorithm to find a fuzzy match.
@@ -12,14 +12,14 @@ import { FuzzyStringMatcher, MatchScoreComputer } from "./FuzzyStringMatcher";
  * @author cchabanois
  *
  */
-export class BitapStringMatcher implements FuzzyStringMatcher {
+export class BitapStringMatcher implements IFuzzyStringMatcher {
 
     public static MAX_BITS = 32;
 
     private readonly matchThreshold : number;
-    private readonly matchScoreComputer: MatchScoreComputer;
+    private readonly matchScoreComputer: IMatchScoreComputer;
 
-    constructor(matchThreshold : number, matchScoreComputer: MatchScoreComputer) {
+    constructor(matchThreshold : number, matchScoreComputer: IMatchScoreComputer) {
         this.matchThreshold = matchThreshold;
         this.matchScoreComputer =matchScoreComputer;
     }

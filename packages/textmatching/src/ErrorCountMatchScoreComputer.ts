@@ -8,7 +8,7 @@ import { IMatchScoreComputer } from "./IFuzzyStringMatcher";
  */
 export class ErrorCountMatchScoreComputer implements IMatchScoreComputer {
 
-	public score(errorsCount : number, matchLocation : number, expectedLocation : number, pattern : string) : number {
+	public score(pattern : string, errorsCount : number, matchLocation : number, expectedLocation? : number) : number {
 		const accuracy = errorsCount / pattern.length;
 		return accuracy;
 	}

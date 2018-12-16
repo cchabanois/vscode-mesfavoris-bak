@@ -31,7 +31,7 @@ export class BitapBigIntegerStringMatcher implements IFuzzyStringMatcher {
         this.matchScoreComputer = matchScoreComputer;
     }
 
-    public find(text : string | CharSequence, pattern : string, expectedLocation : number) : number {
+    public find(text : string | CharSequence, pattern : string, expectedLocation? : number) : number {
         if (typeof(text) === 'string') {
             text = new StringCharSequence(text);
         }
@@ -44,7 +44,6 @@ export class BitapBigIntegerStringMatcher implements IFuzzyStringMatcher {
         
 		// Initialise the bit arrays.
 		const matchMask = leftShift(BigInt(1), BigInt(pattern.length - 1));
-        bestLocation = -1;
         
         const startLocation = 1;
 		const finishLocation = text.length() + pattern.length;
@@ -72,7 +71,7 @@ export class BitapBigIntegerStringMatcher implements IFuzzyStringMatcher {
                     rd[j] = bitwiseOr(rd[j], last_rd[j + 1]);
                 }
                 if (!equal(bitwiseAnd(rd[j], matchMask), BigInt(0))) {
-					const score = this.matchScoreComputer.score(passNumber, j - 1, expectedLocation, pattern);
+					const score = this.matchScoreComputer.score(pattern, passNumber, j - 1, expectedLocation);
 					// This match will almost certainly be better than any
 					// existing match. But check anyway.
 					if (score <= scoreThreshold) {
@@ -82,8 +81,7 @@ export class BitapBigIntegerStringMatcher implements IFuzzyStringMatcher {
 					}
 				}
             }
-			if (this.matchScoreComputer.score(passNumber + 1, expectedLocation, expectedLocation,
-                pattern) > scoreThreshold) {
+			if (this.matchScoreComputer.score(pattern, passNumber + 1, expectedLocation || -1, expectedLocation) > scoreThreshold) {
                 // No hope for a (better) match at greater error levels.
                 break;
             }

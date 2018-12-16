@@ -85,7 +85,7 @@ export class FilteredCharSequence implements CharSequence {
         return it.value.getParentIndex(index - it.key);
     }
 
-    public getIndex(parentIndex : number) {
+    public getIndex(parentIndex : number) : number|undefined {
         if (parentIndex < 0 || parentIndex >= this.parent.length()) {
             return undefined;
         }

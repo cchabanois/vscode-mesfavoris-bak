@@ -15,18 +15,20 @@ export class FuzzyStringMatcher implements IFuzzyStringMatcher {
         this.bitapLongStringMatcher = new BitapLongStringMatcher(matchThreshold, matchScoreComputer);
     }
 
-    public find(text: string|CharSequence, pattern: string, expectedLocation: number): number {
+    public find(text: string|CharSequence, pattern: string, expectedLocation?: number): number {
         if (typeof(text) === 'string') {
             text = new StringCharSequence(text);
         }        
-        expectedLocation = Math.max(0, Math.min(expectedLocation, text.length()));
+        if (expectedLocation !== undefined) {
+            expectedLocation = Math.max(0, Math.min(expectedLocation, text.length()));
+        }
         if (text.length() === pattern.length && text.toString() === pattern) {
             // shortcut
             return 0;
         } else if (text.length() === 0) {
             // nothing to match
             return -1;
-        } else if ((expectedLocation + pattern.length <= text.length()) && 
+        } else if (expectedLocation !== undefined && (expectedLocation + pattern.length <= text.length()) && 
             (text.subSequence(expectedLocation, expectedLocation + pattern.length).toString() === pattern)) {
             // Perfect match at the perfect spot!
             return expectedLocation;

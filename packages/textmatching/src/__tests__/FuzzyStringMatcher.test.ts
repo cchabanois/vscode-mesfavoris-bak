@@ -1,5 +1,4 @@
 import * as fs from 'fs';
-import { BitapStringMatcher } from '../BitapStringMatcher';
 import { DistanceMatchScoreComputer } from '../DistanceMatchScoreComputer';
 import 'jest-extended';
 import { FuzzyStringMatcher } from '../FuzzyStringMatcher';

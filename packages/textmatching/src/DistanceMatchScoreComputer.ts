@@ -21,9 +21,9 @@ export class DistanceMatchScoreComputer implements IMatchScoreComputer {
     }
 
 
-    score(errorsCount: number, matchLocation: number, expectedLocation: number, pattern: string): number {
+    score(pattern : string, errorsCount: number, matchLocation: number, expectedLocation?: number|undefined): number {
 		const accuracy = errorsCount / pattern.length;
-		if (expectedLocation == -1) {
+		if (expectedLocation === undefined) {
 			return accuracy;
 		}
 		const proximity = Math.abs(expectedLocation - matchLocation);

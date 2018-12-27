@@ -1,6 +1,5 @@
-import { CharSubSequence } from "./CharSubSequence";
 
-export interface CharSequence {
+export interface CharSequence extends Iterable<string>{
     length() : number;
 
     charAt(index : number) : string;
@@ -12,30 +11,9 @@ export interface CharSequence {
      * @param end the end index, exclusive
      */
     subSequence(start : number, end : number) : CharSequence;
+
+    [Symbol.iterator]() : any;
+
 }
 
-export class StringCharSequence implements CharSequence {
-
-    private readonly value : string;
-
-    constructor(value : string) {
-        this.value = value;
-    }
-
-    public length(): number {
-        return this.value.length;
-    }    
-    
-    public charAt(index: number): string {
-        return this.value.charAt(index);
-    }
-
-    subSequence(start: number, end: number): CharSequence {
-        return new CharSubSequence(this, start, end);
-    }
-
-    public toString() : string {
-        return this.value;
-    }
-}
 

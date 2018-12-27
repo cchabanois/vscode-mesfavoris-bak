@@ -1,12 +1,14 @@
 import { CharSequence } from "./CharSequence";
+import { AbstractCharSequence } from "./AbstractCharSequence";
 
-export class CharSubSequence implements CharSequence {
+export class CharSubSequence extends AbstractCharSequence {
 
     private readonly offset : number;
     private readonly _length : number;
     private parent : CharSequence;
 
     constructor(parent : CharSequence, start : number, end : number) {
+        super();
         this.parent = parent;
         this.offset = start;
         this._length = end - start;

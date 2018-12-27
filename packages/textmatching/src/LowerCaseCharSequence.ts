@@ -1,10 +1,12 @@
 import { CharSequence } from "./CharSequence";
+import { AbstractCharSequence } from "./AbstractCharSequence";
 import { CharSubSequence } from "./CharSubSequence";
 
-export class LowerCaseCharSequence implements CharSequence {
+export class LowerCaseCharSequence extends AbstractCharSequence {
     private parent : CharSequence;
 
     constructor(parent : CharSequence) {
+        super();
         this.parent = parent;
     }
 

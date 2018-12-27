@@ -1,4 +1,6 @@
-import { CharSequence, StringCharSequence } from "./CharSequence";
+import { CharSequence } from "./CharSequence";
+import { AbstractCharSequence } from "./AbstractCharSequence";
+import { StringCharSequence } from "./StringCharSequence";
 import createRBTree, { RedBlackTree } from "functional-red-black-tree";
 import { CharSubSequence } from "./CharSubSequence";
 import { isString } from "util";
@@ -19,12 +21,13 @@ export interface ICharSequenceFilter {
  * A partial view from a CharSequence. The parent CharSequence is
  * filtered using CharSequenceFilter
  */
-export class FilteredCharSequence implements CharSequence {
+export class FilteredCharSequence extends AbstractCharSequence {
     private readonly parent : CharSequence;
     private readonly _length : number;
     private readonly subSequences : RedBlackTree<number, CharSubSequence>;
     
     constructor(parent : CharSequence|string, filter : ICharSequenceFilter) {
+        super();
         this.parent = isString(parent)?new StringCharSequence(parent):parent;
         this.subSequences = this.getSubSequences(this.parent, filter);
         const end = this.subSequences.end;

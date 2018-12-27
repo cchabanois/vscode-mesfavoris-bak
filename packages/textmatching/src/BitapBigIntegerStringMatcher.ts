@@ -1,4 +1,5 @@
-import { StringCharSequence, CharSequence } from "./CharSequence";
+import { CharSequence } from "./CharSequence";
+import { StringCharSequence } from "./StringCharSequence";
 import { IFuzzyStringMatcher, IMatchScoreComputer } from "./IFuzzyStringMatcher";
 import JSBI from 'jsbi';
 

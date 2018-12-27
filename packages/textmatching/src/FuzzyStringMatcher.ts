@@ -1,7 +1,8 @@
 import { IFuzzyStringMatcher, IMatchScoreComputer } from "./IFuzzyStringMatcher";
 import { BitapStringMatcher } from "./BitapStringMatcher";
 import { BitapBigIntegerStringMatcher } from "./BitapBigIntegerStringMatcher";
-import { CharSequence, StringCharSequence } from "./CharSequence";
+import { CharSequence } from "./CharSequence";
+import { StringCharSequence } from "./StringCharSequence";
 import { BitapLongStringMatcher } from "./BitapLongStringMatcher";
 
 export class FuzzyStringMatcher implements IFuzzyStringMatcher {

@@ -1,6 +1,7 @@
 import { IFuzzyStringMatcher } from "./IFuzzyStringMatcher";
 import { ICharSequenceFilter, FilteredCharSequence } from "./FilteredCharSequence";
-import { CharSequence, StringCharSequence } from "./CharSequence";
+import { CharSequence } from "./CharSequence";
+import { StringCharSequence } from "./StringCharSequence";
 
 /**
  * A fuzzy string matcher that filters the text (removing whitespaces for ex)

@@ -1,12 +1,16 @@
 import { CharSequence } from "./CharSequence";
 import { AbstractCharSequence } from "./AbstractCharSequence";
 import { CharSubSequence } from "./CharSubSequence";
+import { StringCharSequence } from "./StringCharSequence";
 
 export class LowerCaseCharSequence extends AbstractCharSequence {
     private parent : CharSequence;
 
-    constructor(parent : CharSequence) {
+    constructor(parent : CharSequence|string) {
         super();
+        if (typeof(parent) === 'string') {
+            parent = new StringCharSequence(parent);
+        }
         this.parent = parent;
     }
 

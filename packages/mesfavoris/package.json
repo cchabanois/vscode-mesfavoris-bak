@@ -15,9 +15,16 @@
     "Other"
   ],
   "activationEvents": [
-    "onView:mesFavoris"
+    "onView:mesFavoris",
+    "onCommand:extension.sayHello"
   ],
   "contributes": {
+    "commands": [
+      {
+        "command": "extension.sayHello",
+        "title": "Hello World"
+      }
+    ],
     "views": {
       "explorer": [
         {
@@ -28,8 +35,11 @@
     }
   },
   "scripts": {
+    "vscode:prepublish": "tsc -p ./",
+    "compile": "tsc -watch -p ./",
     "postinstall": "node ../../node_modules/vscode/bin/install",
-    "test": "node ../../node_modules/vscode/bin/test"
+    "test": "copyfiles -u 1 ./src/**/*.txt ./out && node ../../node_modules/vscode/bin/test",
+    "clean": "rimraf ./out"
   },
   "devDependencies": {
     "@types/chai": "^4.1.4",
@@ -37,11 +47,14 @@
     "@types/node": "^8.10.25",
     "@types/tmp": "^0.0.33",
     "chai": "^4.2.0",
+    "copyfiles": "^2.1.0",
     "tslint": "^5.8.0",
-    "vscode": "^1.1.21"
+    "vscode": "^1.1.21",
+    "rimraf": "^2.6.2"
   },
   "dependencies": {
     "@mesfavoris/core": "^1.0.0",
+    "@mesfavoris/textmatching": "^1.0.0",
     "rxjs": "^6.3.3",
     "tmp": "^0.0.33",
     "typescript": "~3.0.0"

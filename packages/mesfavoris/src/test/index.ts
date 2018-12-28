@@ -11,12 +11,14 @@
 // a possible error to the callback or null if none.
 
 import * as testRunner from 'vscode/lib/testrunner';
+import { timeout } from 'rxjs/operators';
 
 // You can directly control Mocha options by uncommenting the following lines
 // See https://github.com/mochajs/mocha/wiki/Using-mocha-programmatically#set-options for more info
 testRunner.configure({
     ui: 'bdd',
-    useColors: true // colored output from test results
+    useColors: true, // colored output from test results
+    timeout: 5000
 });
 
 module.exports = testRunner;

@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import * as vscode from 'vscode';
 import * as path from 'path';
-import { DocumentFuzzySearcher } from '../../textmatching/DocumentFuzzySearcher';
+import { DocumentFuzzySearcher } from '../../src/textmatching/DocumentFuzzySearcher';
 
 const getRange = (line1 : number, line2 : number) => {
     const range = new vscode.Range(new vscode.Position(line1, 0), new vscode.Position(line2, Number.MAX_SAFE_INTEGER));

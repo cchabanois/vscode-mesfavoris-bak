@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import * as vscode from 'vscode';
 import * as path from 'path';
-import { DocumentCharSequence } from '../../textmatching/DocumentCharSequence';
+import { DocumentCharSequence } from '../../src/textmatching/DocumentCharSequence';
 
 describe('DocumentCharSequence Tests', () => {
     describe('length', () => {

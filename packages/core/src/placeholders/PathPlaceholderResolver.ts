@@ -1,6 +1,5 @@
 import { PathPlaceholder } from "./PathPlaceholder";
 import * as Path from 'path';
-import { print } from "util";
 
 export class PathPlaceholderResolver {
     private pathPlaceholdersProvider : () => Map<string, PathPlaceholder>;

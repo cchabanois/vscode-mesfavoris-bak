@@ -1,4 +1,5 @@
 import { resolve } from 'path';
+
 export class PathPlaceholder {
     public static HOME_NAME = "HOME";
     readonly name : string;

@@ -114,12 +114,5 @@ export class FilteredCharSequence extends AbstractCharSequence {
     subSequence(start: number, end: number): CharSequence {
         return new CharSubSequence(this, start, end);
     }
-    public toString() : string {
-        let result : string = '';
-        for (let i = 0; i < this._length; i++) {
-            result += this.charAt(i);
-        }
-        return result;
-    }
 
 }

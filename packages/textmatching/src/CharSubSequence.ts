@@ -37,12 +37,4 @@ export class CharSubSequence extends AbstractCharSequence {
         return new CharSubSequence(this, start, end);
     }
 
-    public toString() : string {
-        let result : string = '';
-        for (let i = 0; i < this._length; i++) {
-            result += this.charAt(i);
-        }
-        return result;
-    }
-
 }

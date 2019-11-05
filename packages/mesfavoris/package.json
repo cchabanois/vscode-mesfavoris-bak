@@ -32,6 +32,26 @@
           "name": "Mes Favoris"
         }
       ]
+    },
+    "configuration": {
+      "type":"object",
+      "title":"mesfavoris configuration",
+      "properties" : {
+        "mesfavoris.placeholders": {
+          "type":"array",
+          "title":"path placeholders",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "name for the placeholder"
+            },
+            "path": {
+              "type": "string",
+              "description": "path"
+            }
+          }
+        }
+      }
     }
   },
   "scripts": {
@@ -39,7 +59,7 @@
     "compile": "tsc -watch -p ./",
     "watch": "tsc -watch -p ./",
     "postinstall": "node ../../node_modules/vscode/bin/install",
-    "test": "copyfiles -u 1 ./src/**/*.txt ./out && node ../../node_modules/vscode/bin/test",
+    "test": "copyfiles -u 1 ./test/**/*.txt ./out/test && node ../../node_modules/vscode/bin/test",
     "clean": "rimraf ./out"
   },
   "devDependencies": {

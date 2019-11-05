@@ -1,21 +1,30 @@
 import { createEpicMiddleware, Epic, StateObservable } from "redux-observable";
 import epics from "./epics";
-import { applyMiddleware, createStore } from "redux";
+import { applyMiddleware, createStore, Action } from "redux";
 import reducers from "./reducers";
-import { from, InteropObservable, Observable, Subscriber } from "rxjs";
+import { from, InteropObservable, Observable, Subscriber, BehaviorSubject } from "rxjs";
 import { State } from "./state/State";
-import { map, distinctUntilChanged } from "rxjs/operators";
+import { map, distinctUntilChanged, mergeMap } from "rxjs/operators";
 import { BookmarksTree } from "./model/BookmarksTree";
+import { bookmarksTreeStateReducer } from "./reducers/BookmarksTreeStateReducer";
 
 
 const epicMiddleware = createEpicMiddleware();
 
+export const epic$ = new BehaviorSubject(epics);
+const rootEpic : Epic = (inputAction$, outputAction$, state$) => epic$.pipe(
+  mergeMap(epic => epic(inputAction$, outputAction$, state$))
+);
+
+export const reducersMap = {
+  bookmarksTreeState: bookmarksTreeStateReducer
+}
+
 function configureStore() {
   const store = createStore(reducers, applyMiddleware(epicMiddleware));
-  epicMiddleware.run(epics as Epic);
+  epicMiddleware.run(rootEpic);
   return store;
 }
-  
   
 export const store = configureStore();
 
